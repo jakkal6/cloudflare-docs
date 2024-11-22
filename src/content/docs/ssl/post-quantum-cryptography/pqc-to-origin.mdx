@@ -51,7 +51,13 @@ The possible values are:
 
 ### Origin server
 
-To make sure that your origin server prefers the post-quantum key agreement:
+To make sure that your origin server prefers the post-quantum key agreement use the `bssl` tool of [BoringSSL](https://github.com/google/boringssl):
+
+<Example>
+```bash
+$ bssl client -connect (your server):443 -curves X25519MLKEM768 ```
+Verify that the `ECDHE curve` in the handshake output indicates `X25519MLKEM768`.
+</Example>
 
 1. Use Cloudflare's [fork of BoringSSL](https://github.com/cloudflare/boringssl-pq).
 2. Use the `bssl` tool of BoringSSL:
